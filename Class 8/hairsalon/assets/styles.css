@@ -1,0 +1,82 @@
+:root {
+  --nav-height: 4.8rem;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+}
+
+/* Utilities */
+.contained {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Header */
+
+header {
+  height: 100vh;
+  position: relative;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  height: 4.8rem;
+
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: black;
+}
+
+.logo-container,
+.nav-actions {
+  align-self: center;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  flex-grow: 1;
+  align-self: center;
+  justify-content: left;
+}
+
+.nav-link {
+  flex-grow: 1;
+  background: blue;
+}
+
+nav a {
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: black;
+}
+
+.logo-container > a > img {
+  height: 4.8rem;
+}
+
+/* Hero Section */
+.hero {
+  background-image: url("https://images.unsplash.com/photo-1470259078422-826894b933aa?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: calc(100% - var(--nav-height));
+}
+
+p.opening-hours {
+  position: absolute;
+  top: 50%;
+  right: -8rem;
+  transform: rotate(90deg) translateY(-50%);
+  font-size: 2rem;
+}
