@@ -49,7 +49,7 @@ nav {
 
 .nav-link {
   flex-grow: 1;
-  background: blue;
+  text-align: center;
 }
 
 nav a {
@@ -67,10 +67,13 @@ nav a {
 
 /* Hero Section */
 .hero {
-  background-image: url("https://images.unsplash.com/photo-1470259078422-826894b933aa?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://images.unsplash.com/photo-1470259078422-826894b933aa?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-size: cover;
   background-repeat: no-repeat;
   height: calc(100% - var(--nav-height));
+
+  align-items: center;
 }
 
 p.opening-hours {
@@ -79,4 +82,41 @@ p.opening-hours {
   right: -8rem;
   transform: rotate(90deg) translateY(-50%);
   font-size: 2rem;
+  color: white;
+}
+
+.main-headline {
+  font-size: 9.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2rem;
+  color: white;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  height: 100%;
+}
+
+.slogan {
+  font-size: 2rem;
+  letter-spacing: 0.6rem;
+  color: white;
+}
+
+.hero-cta {
+  padding: 1rem 2.4rem;
+  background-color: black;
+  align-self: flex-start;
+  color: white;
+  font-size: 2rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero-cta > i {
+  color: darkgray;
+  margin-right: 5px;
 }
