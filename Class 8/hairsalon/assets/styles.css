@@ -86,10 +86,11 @@ p.opening-hours {
 }
 
 .main-headline {
-  font-size: 9.6rem;
+  font-size: 8rem;
   text-transform: uppercase;
   letter-spacing: 1.2rem;
   color: white;
+  line-height: 1;
 }
 
 .hero-content {
@@ -104,6 +105,7 @@ p.opening-hours {
   font-size: 2rem;
   letter-spacing: 0.6rem;
   color: white;
+  margin-bottom: 1rem;
 }
 
 .hero-cta {
@@ -114,9 +116,116 @@ p.opening-hours {
   font-size: 2rem;
   text-decoration: none;
   font-weight: bold;
+  margin-bottom: 10rem;
 }
 
 .hero-cta > i {
   color: darkgray;
   margin-right: 5px;
+}
+
+.cta-card {
+  background-color: black;
+  color: white;
+  max-width: 280px;
+  min-height: 240px;
+  padding: 2rem 0;
+}
+
+.cta-card > * {
+  padding: 1rem 2.5rem;
+}
+
+.cta-card > span {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 2rem;
+
+  border-left: 4px solid white;
+  text-transform: uppercase;
+}
+
+.cta-card > p {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.cta-card > p span {
+  font-size: 2.8rem;
+  font-weight: bold;
+}
+
+.cta-card > a {
+  display: inline-block;
+  margin-left: 2rem;
+  color: black;
+  background-color: white;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.cta-card > a i {
+  margin-right: 0.5rem;
+}
+
+.indicators {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  display: flex;
+  gap: 2rem;
+}
+
+.indicator {
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.6rem;
+}
+
+/* Main Section */
+
+/* Features  Section*/
+
+.features {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 2rem;
+}
+
+.feature {
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.features-image {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+}
+
+.img-container {
+  position: relative;
+  padding: 1rem;
+}
+
+.img-decoration {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  background-color: #e6e6e6;
+  border-radius: 50%;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-90%, -80%);
 }
