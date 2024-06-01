@@ -19,6 +19,7 @@ html {
 header {
   height: 100vh;
   position: relative;
+  margin-bottom: 10rem;
 }
 
 /* Navigation */
@@ -108,7 +109,7 @@ p.opening-hours {
   margin-bottom: 1rem;
 }
 
-.hero-cta {
+.button-black {
   padding: 1rem 2.4rem;
   background-color: black;
   align-self: flex-start;
@@ -158,7 +159,7 @@ p.opening-hours {
   font-weight: bold;
 }
 
-.cta-card > a {
+.button-white {
   display: inline-block;
   margin-left: 2rem;
   color: black;
@@ -169,7 +170,8 @@ p.opening-hours {
   text-decoration: none;
 }
 
-.cta-card > a i {
+.button-black i,
+.button-white i {
   margin-right: 0.5rem;
 }
 
@@ -195,8 +197,9 @@ p.opening-hours {
 .features {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  gap: 2rem;
+  justify-content: center;
+  gap: 8rem;
+  margin-bottom: 10rem;
 }
 
 .feature {
@@ -228,4 +231,184 @@ p.opening-hours {
   top: 50%;
   left: 50%;
   transform: translate(-90%, -80%);
+}
+
+.feature-title {
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.feature-subtitle {
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+/* Demo section */
+
+.demo {
+  display: flex;
+  gap: 10%;
+  background-color: #dcdddf;
+  padding: 10rem;
+  justify-content: center;
+}
+
+.demo > div {
+  max-width: 30%;
+}
+
+.media {
+  width: 35%;
+  position: relative;
+}
+
+.media > video {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
+.text > h3 {
+  font-size: 3.6rem;
+  text-transform: uppercase;
+}
+
+.text > p {
+  flex-grow: 1;
+  font-size: 1.6rem;
+  text-align: justify;
+  line-height: 2;
+  display: inline-block;
+}
+
+.text .button-black {
+  display: inline-block;
+  margin-bottom: unset;
+}
+
+/* Stylists Sections */
+
+.stylists {
+  max-width: 65%;
+  margin: 0 auto;
+  padding: 5rem 0;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5rem;
+}
+
+.stylist {
+  position: relative;
+  max-width: 400px;
+}
+
+.stylist-info {
+  position: absolute;
+  background-color: black;
+  padding: 1rem 3rem;
+  color: white;
+  width: 70%;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  text-align: center;
+}
+
+.stylist-name {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+}
+
+.stylist-role {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.banner > .button-black {
+  margin-bottom: unset;
+}
+
+.banner {
+  width: 65%;
+  margin: 0 auto;
+  height: 36rem;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://images.unsplash.com/photo-1648243652780-c7f10cf8d33a?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  resize: both;
+  padding: 6rem 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4rem;
+  margin-bottom: 10rem;
+}
+
+.banner > h3 {
+  color: white;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.banner > p {
+  color: white;
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  max-width: 360px;
+  word-wrap: break-word;
+}
+
+.banner > p > span {
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+/* Lookbook */
+
+.lookbook {
+  width: 65%;
+  margin: 0 auto;
+}
+
+.lookbook > .title {
+  font-size: 2.4rem;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+  position: relative;
+  margin-bottom: 4rem;
+}
+
+.lookbook > .title::after {
+  content: "";
+  width: 40px;
+  background-color: #c1c1c1;
+  height: 4px;
+  display: inline-block;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.lookbook-imgs {
+  display: flex;
+  gap: 2rem;
+}
+
+.lookbook-imgs > div > img:first-child {
+  margin-bottom: 2rem;
 }
