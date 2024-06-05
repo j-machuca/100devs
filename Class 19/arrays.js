@@ -1,3 +1,20 @@
+const { performance, PerformanceObserver } = require("perf_hooks");
+
+const perfObserver = new PerformanceObserver((items) => {
+  items.getEntries().forEach((entry) => {
+    console.log(entry);
+  });
+});
+
+perfObserver.observe({ entryTypes: ["measure"], buffer: true });
+
+// For synchronous functions boilerplate is reduced to
+// perfObserver.observe({ entryTypes: ["function"] })
+
+// const perfWrapper = performance.timerify(syncFunction)
+
+// perfWrapper()
+
 // Write a program that:
 
 // Musketeers
@@ -517,3 +534,211 @@ console.log(
     { id: "pete", name: "Pete Peterson", age: 31 },
   ])
 );
+
+// Eloquent Javascript tasks
+
+// The sum of a range
+
+// Write a range function that takes two arguments, start and end, and returns an array containing all the numbers from start up to and including end.
+
+function range(start, end, step = 1) {
+  let arr = [];
+  let stepVal = Math.abs(step);
+  // if start is greater than end from 5 to -2
+  // should iterate and substract
+
+  if (start > end) {
+    for (let i = start; i >= end; i -= stepVal) {
+      arr.push(i);
+    }
+  } else {
+    for (let i = start; i <= end; i += stepVal) {
+      arr.push(i);
+    }
+  }
+  return arr;
+}
+
+// Next, write a sum function that takes an array of numbers and returns the sum of these numbers. Run the example program and see whether it does indeed return 55.
+
+function sum(arr) {
+  return arr.reduce((prev, curr) => prev + curr);
+}
+
+console.log(range(-5, -2, -1));
+console.log(sum(range(-5, -2, -1)));
+
+// Reversing an array
+
+// Arrays have a reverse method that changes the array by inverting the order in which its elements appear. For this exercise, write two functions, reverseArray and reverseArrayInPlace. The first, reverseArray, should take an array as argument and produce a new array that has the same elements in the inverse order. The second, reverseArrayInPlace, should do what the reverse method does: modify the array given as argument by reversing its elements. Neither may use the standard reverse method.
+
+let arrToSort = [
+  640, 26, 73, 315, 479, 673, 554, 768, 986, 593, 955, 164, 961, 466, 874, 318,
+  108, 900, 227, 124, 679, 191, 376, 595, 801, 490, 832, 916, 119, 931, 321,
+  651, 605, 5, 696, 488, 66, 92, 948, 188, 406, 554, 872, 263, 427, 676, 673,
+  767, 502, 480, 721, 313, 892, 937, 706, 158, 348, 605, 593, 138, 396, 464,
+  143, 970, 396, 97, 560, 913, 305, 347, 829, 434, 505, 817, 13, 905, 119, 89,
+  672, 228, 950, 349, 228, 393, 827, 21, 56, 259, 73, 986, 994, 502, 727, 289,
+  55, 267, 336, 280, 847, 218, 196, 198, 559, 141, 188, 459, 315, 838, 421, 668,
+  545, 438, 685, 821, 748, 888, 333, 889, 893, 971, 709, 946, 581, 423, 139, 26,
+  848, 438, 490, 48, 982, 933, 638, 218, 694, 888, 424, 967, 220, 474, 365, 64,
+  967, 792, 139, 742, 400, 541, 236, 720, 303, 416, 816, 745, 840, 217, 693,
+  748, 873, 890, 743, 21, 105, 6, 830, 474, 942, 797, 303, 848, 693, 52, 698,
+  318, 149, 331, 493, 579, 529, 671, 585, 13, 647, 591, 293, 74, 85, 464, 305,
+  194, 500, 191, 389, 124, 788, 937, 357, 938, 154, 728, 453, 717, 203, 551, 70,
+  796, 344, 245, 391, 818, 533, 388, 367, 37, 217, 298, 513, 991, 928, 673, 507,
+  363, 137, 351, 855, 468, 483, 948, 362, 396, 490, 52, 958, 662, 356, 495, 253,
+  845, 594, 553, 821, 897, 604, 960, 770, 215, 677, 33, 137, 982, 861, 329, 507,
+  20, 109, 338, 266, 682, 108, 733, 280, 195, 753, 158, 95, 500, 43, 345, 475,
+  855, 964, 613, 3, 41, 429, 325, 362, 685, 362, 287, 46, 909, 178, 934, 630,
+  790, 751, 386, 803, 37, 820, 639, 914, 359, 154, 254, 529, 253, 390, 46,
+];
+
+// could probably use two pointers and reduce time complexity
+// create an array using the arr.length property
+
+function reverseArray(arr) {
+  let newArr = [];
+  for (let i = arr.length - 1; i >= 0; i--) {
+    newArr.push(arr[i]);
+  }
+  return newArr;
+}
+
+// performance.mark("reverse-new-start");
+console.log(reverseArray(arrToSort));
+// performance.mark("reverse-new-end");
+// performance.measure(
+//   "reversed unoptimized",
+//   "reverse-new-start",
+//   "reverse-new-end"
+// );
+
+function reverseArrayInPlace(arr) {
+  let mid;
+  let left = 0;
+  let right = arr.length - 1;
+  // items count in array is even this will affect the mid point
+  if (arr.length % 2 === 0) {
+    mid = (arr.length - 1) / 2;
+    while (left <= mid) {
+      [arr[left], arr[right]] = [arr[right], arr[left]];
+      left += 1;
+      right -= 1;
+    }
+  } else {
+    // item count in array is odd
+    mid = Math.floor((arr.length - 1) / 2);
+    while (left < mid) {
+      [arr[left], arr[right]] = [arr[right], arr[left]];
+      left += 1;
+      right -= 1;
+    }
+  }
+  return arr;
+}
+
+console.log("---- reverse in place ----");
+// performance.mark("inplace-start");
+console.log(reverseArrayInPlace(arrToSort));
+// performance.mark("inplace-end");
+
+// performance.measure("reverse in place", "inplace-start", "inplace-end");
+
+// Write a function arrayToList that builds up a list structure like the one shown when given [1, 2, 3] as argument. Also write a listToArray function that produces an array from a list. Add the helper functions prepend, which takes an element and a list and creates a new list that adds the element to the front of the input list, and nth, which takes a list and a number and returns the element at the given position in the list (with zero referring to the first element) or undefined when there is no such element.
+
+console.log("---- array to list ----");
+function arrayToList(arr) {
+  let list = null;
+  for (let i = arr.length - 1; i >= 0; i--) {
+    list = { value: arr[i], rest: list };
+  }
+  return list;
+}
+
+console.log(arrayToList([10, 20, 30]));
+
+// write a listToArray function that produces an array from a list
+
+function listToArray(list) {
+  let arr = [];
+  // iterate until node is null
+  for (let node = list; node; node = node.rest) {
+    arr.push(node.value);
+  }
+
+  return arr;
+}
+// list to array
+console.log("---- list to array ----");
+console.log(listToArray(arrayToList([10, 20, 30])));
+
+// prepending a new node
+
+console.log("---- prepending a new node to list ----");
+function prepend(value, list) {
+  return { value, rest: list };
+}
+
+console.log(prepend(10, prepend(20, null)));
+
+// adding at the nth node
+
+console.log("---- Add in the nth place ----");
+function nth(list, node) {
+  if (!list) return undefined;
+  // if i've traversed x positions and reached the node that im looking for (= 0)
+  else if (node == 0) return list.value;
+  // if its not the node im looking for subtract one since i've iterated one more time
+  else return nth(list.rest, node - 1);
+}
+
+console.log(nth(arrayToList([10, 20, 30]), 1));
+
+// Deep comparison
+
+// The == operator compares objects by identity, but sometimes you’d prefer to compare the values of their actual properties.
+
+// Write a function deepEqual that takes two values and returns true only if they are the same value or are objects with the same properties, where the values of the properties are equal when compared with a recursive call to deepEqual.
+
+console.log("---- Deep Comparison ----");
+
+function deepEqual(obj1, obj2) {
+  // do shallow comparison
+  console;
+  if (obj1 === obj2) {
+    return true;
+  }
+
+  // check if one of them is null or not an object since they're not a basic data type (string,number,boolean, etc.)
+  if (
+    obj1 == null ||
+    typeof obj1 != "object" ||
+    obj2 == null ||
+    typeof obj2 != "object"
+  ) {
+    return false;
+  }
+
+  let keysA = Object.keys(obj1),
+    keysB = Object.keys(obj2);
+
+  // if objects do not have the same number of keys return false
+  if (keysA.length !== keysB.length) {
+    return false;
+  }
+
+  for (let key of keysA) {
+    if (!keysB.includes(key) || !deepEqual(obj1[key], obj2[key])) return false;
+  }
+
+  return true;
+}
+
+let obj = { here: { is: "an" }, object: 2 };
+
+console.log(deepEqual(obj, obj)); // → true
+
+console.log(deepEqual(obj, { here: 1, object: 2 })); // → false
+
+console.log(deepEqual(obj, { here: { is: "an" }, object: 2 })); // → true
