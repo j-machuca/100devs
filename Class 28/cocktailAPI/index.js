@@ -28,11 +28,15 @@ function onSubmitHandler(e) {
   // console.log(formData);
   const query = queryInput.value;
   CocktailService.getCocktails(query).then((data) => {
-    console.log(data);
-    data.forEach((element) => {
-      const cocktail = new Cocktail(element);
-      cocktail.render(cocktailContainer);
-    });
+    if (!data) {
+      cocktailContainer.innerHTML =
+        "<h3>No results found... try another drink</h3>";
+    } else {
+      data.forEach((element) => {
+        const cocktail = new Cocktail(element);
+        cocktail.render(cocktailContainer);
+      });
+    }
   });
   queryInput.value = "";
 }
